@@ -1,0 +1,404 @@
+/* General */
+*{
+    margin: 0;
+    padding: 0;  
+    font-family: 'Lato', sans-serif;
+  }
+  
+  body{  
+      background-color: whitesmoke;
+      h1{
+        color: black;
+        font-size: 2rem;
+        margin: 20px; 
+    }  
+    .tituloSeccion{
+        text-align: center;
+    }
+    #tituloPrincipal{/*Aqui hay un Extend*/
+        @extend .tituloSeccion;
+        color: grey;
+        font-weight: bolder;
+        margin: 30px;
+        animation-name: rotador;
+        animation-duration:1s;
+        animation-iteration-count: 1;
+    }
+    @keyframes rotador{
+        from{
+        transform: rotate(-5deg);
+        color: black;
+        }
+        to{
+        transform: rotate(5deg);
+        color: grey;
+        }
+    }
+    p{
+        font-weight: bold;
+        margin: 20px 50px 60px 50px;
+    }
+    
+  } 
+/* Fin General */
+
+/*Mixin*/
+@mixin widthHeigth ($heigth, $width){
+  height: $heigth;
+  width: $width;
+}
+/*Fin Mixin*/
+
+/* Nav Bootstrap */
+  .nav-link{ /*Aqui hay un Include*/
+    @include widthHeigth(45px, 100px);
+      text-align: center;
+  }
+  
+  .navbar-toggler{
+      margin: 10px;
+  }
+/* Fin Nav Bootstrap*/
+
+/* Nav */
+  .nav{
+
+  &__lista{
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none; 
+      position: sticky;
+      width: 100%;
+  }
+  
+    &__item{
+      padding: 20px;
+
+  }
+  
+    &__link{
+      color: white;
+      text-decoration:none;   
+      letter-spacing: 2px;
+      font-style: normal;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 25px;
+      border: black solid 1px;
+      padding: 8px;
+      font-size: 0.8rem;
+  }
+    &__link--activo{
+    color: white !important; 
+  }
+  
+    &__link:hover{
+      background-color: rgba(148, 38, 38, 0.301);
+      transition: 0.2s;
+      font-weight: bolder;
+  }
+} 
+/* Fin Nav */
+  
+/* Sobre Mi */
+  #fotoSobreMi{ /*Aqui hay un Include*/
+      @include widthHeigth(320px, 420px);
+      padding: 0 0 20px 0;
+  }
+/* Fin Sobre Mi */
+  
+/* Formulario*/
+  .formulario{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+
+    &__fieldset{
+    padding: 5px;
+    }
+  }
+/*Fin Formulario*/
+  
+/*Servicios*/
+ .servicios{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+
+        &__th{
+            background: grey;
+            color: white;
+            padding: 10px;
+        }
+    
+        &__td{
+            text-align: center;
+            border: black solid 1px;
+        }
+        &__lista{
+            margin:35px 25px;
+
+        }
+        
+ }
+/* Fin Servicios */
+  
+/* Medidas Imagenes */
+  .widthHeigthGaleria{ /*Aqui hay un Include*/
+    @include widthHeigth(430px, 300px);
+    padding: 30px;
+  }
+/* Fin Medidas Imagenes */
+  
+/* Footer */
+  .footer{ /*Aqui hay un Include*/
+      background-image: linear-gradient(to left, darkgrey , white);
+      @include widthHeigth(150px, 100%);
+      list-style: none;
+      
+      &__lista{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        list-style: none;
+        }
+      &__item{
+        display: flex;
+        text-decoration: none;
+        }
+      &__link{
+        text-decoration: none;
+        color: white;
+        padding: 15px;
+
+        &--activo{
+            color: black;
+        }
+    }   
+  }
+/* Fin Footer */
+  
+/* Extra Small Divices Celulares */
+  @media only screen and (max-width:600px){
+  
+      #grillaInicio{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 350px;
+          grid-template-areas: "video "
+                               "h1"
+                               "p";
+          justify-items: center;
+          }
+  
+          #carouselExampleIndicators , .carousel-inner{
+              height: 350px;
+              width: 100%;
+      }
+  
+      
+      #grillaSobreMi{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 350px;
+          grid-template-areas:"parrafo"
+                               "img";
+          justify-items: center;
+          padding: 5px;
+      }
+  
+      #grillaGaleria{
+          display: grid;  
+          grid-template-columns: 100%;
+          grid-template-rows: 500px;
+          grid-template-areas: "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img "
+                               "img " ;
+          justify-items: center;
+        } 
+  }
+/* Fin Extra Small Divices Celulares */
+  
+/* Tables */
+  @media only screen and (min-width: 600px){
+      #grillaInicio{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 540px;
+          grid-template-areas: "carousel "
+                               "h1"
+                               "p";
+          justify-items: center;
+      }
+  
+      #carouselExampleIndicators{
+          height: 480px;
+          width: 100%;
+  }
+      
+      #grillaSobreMi{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 350px;
+          grid-template-areas:"parrafo"
+                               "img";
+          justify-items: center;
+          padding: 5px;
+      }
+  
+      #grillaGaleria{
+          display: grid;  
+          grid-template-columns: 50% 50%;
+          grid-template-rows: 500px 500px;
+          grid-template-areas: "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img " ;
+          justify-items: center;
+      } 
+        
+  }
+/* Fin Tables */ 
+  
+/* Laptop Escritorio */
+  @media only screen and (min-width: 768px){
+  
+      #grillaInicio{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 650px;
+          grid-template-areas: "carousel "
+                               "h1"
+                               "p";
+          justify-items: center;
+      }
+     
+      #grillaSobreMi{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 350px;
+          grid-template-areas:"parrafo"
+                               "img";
+          justify-items: center;
+          padding: 5px;
+      }
+  
+      #grillaGaleria{
+          display: grid;  
+          grid-template-columns: 50% 50%;
+          grid-template-rows: 500px 500px;
+          grid-template-areas: "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img "
+                               "img img " ;
+          justify-items: center;
+      } 
+  
+        
+  }
+/* Fin Laptop Escritorio */
+  
+/* Ordenador */
+  @media only screen and (min-width:992px){
+      #grillaInicio{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 750px;
+          grid-template-areas: "carousel "
+                               "h1"
+                               "p";
+          justify-items: center;
+      }
+  
+      #carouselExampleIndicators{
+          height: 750px;
+          width: 100%;
+  }
+     
+          #grillaGaleria{
+              display: grid;  
+              grid-template-columns: 50% 50%;
+              grid-template-rows: 500px 500px;
+              grid-template-areas: "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img "
+                                   "img img " ;
+          justify-items: center;
+      } 
+  
+  }
+/* Fin Ordenador */
+  
+  @media only screen and (min-width: 1200px){
+  
+      #grillaInicio{
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 1000px;
+          grid-template-areas: "carousel"
+                               "h1"
+                               "p";
+          justify-items: center;
+      }
+  
+      #carouselExampleIndicators{
+          height: 1500px;
+          width: 100%;
+         
+  }
+     
+  
+      #grillaGaleria{
+          display: grid;  
+          grid-template-columns: 25% 25% 25% 25%;
+          grid-template-rows: 500px 500px 500px;
+          grid-template-areas: " img img img img"
+                               " img img img img"
+                               " img img img img";
+          justify-items: center;
+      }
+  
+  
+  }
+  
+  
+  
+  
+  
+  
